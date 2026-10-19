@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Urdu Phonetic Writer & Copy-Paste",
+  "version": "1.0.0",
+  "description": "Type Urdu easily using the English Phonetic keyboard without installing an OS Urdu keyboard. Quick copy, paste, and auto-save.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Urdu Phonetic Writer",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "clipboardRead",
+    "clipboardWrite"
+  ]
+}

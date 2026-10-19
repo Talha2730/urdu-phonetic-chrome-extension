@@ -1,0 +1,15 @@
+# Do not commit browser account data, credentials or exported 2FA secrets
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.db
+.env
+.env.*
+*backup*.json
+*export*.json
+*secrets*.json
+*.log
+Thumbs.db
+.DS_Store

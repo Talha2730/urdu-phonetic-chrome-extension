@@ -1,0 +1,320 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 450px;
+  height: auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.urdu-text {
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', 'Urdu Typesetting', 'Noto Naskh Arabic', 'Segoe UI', Tahoma, serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 2.0;
+}
+
+/* Compact Top Action Bar (No extra header, matching reference style) */
+.top-bar {
+  background: #44403c;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  border-bottom: 1px solid #292524;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.tb-btn {
+  border: 1px solid #f59e0b;
+  background: #fde68a;
+  color: #1c1917;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.tb-btn:hover {
+  background: #fcd34d;
+}
+
+.tb-btn.primary {
+  background: #fbbf24;
+  color: #1c1917;
+  border-color: #d97706;
+  font-weight: 700;
+}
+
+.tb-btn.primary:hover {
+  background: #f59e0b;
+}
+
+.tb-btn.danger:hover {
+  background: #fca5a5;
+  border-color: #ef4444;
+}
+
+.mode-pill {
+  border: 1px solid #059669;
+  background: #059669;
+  color: #ffffff;
+  padding: 4px 9px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mode-pill.en-mode {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #f59e0b;
+}
+
+/* Paste Fallback Strip */
+.paste-box {
+  display: none;
+  background: #fffbeb;
+  border-bottom: 1px solid #fde68a;
+  padding: 5px 8px;
+  gap: 5px;
+  align-items: center;
+}
+
+.paste-box.active {
+  display: flex;
+}
+
+.paste-box input {
+  flex: 1;
+  padding: 4px 7px;
+  border: 1px solid #f59e0b;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.paste-mini-btn {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #059669;
+  background: #059669;
+  color: #ffffff;
+}
+
+.paste-mini-btn.cancel {
+  background: #ffffff;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+/* Compact Textarea with Large Urdu Font */
+.editor-container {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+}
+
+textarea#urduEditor {
+  width: 100%;
+  height: 150px;
+  padding: 10px 14px;
+  border: none;
+  background: #ffffff;
+  font-size: 32px;
+  color: #0f172a;
+  resize: vertical;
+  outline: none;
+  display: block;
+}
+
+textarea#urduEditor::placeholder {
+  color: #94a3b8;
+  font-size: 24px;
+}
+
+.toast-overlay {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  background: #047857;
+  color: #ffffff;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.toast-overlay.visible {
+  opacity: 0.95;
+}
+
+/* Full-width Expandable Keyboard Bar */
+.keyboard-toggle-bar {
+  width: 100%;
+  background: linear-gradient(180deg, #fcd34d 0%, #eab308 100%);
+  color: #1c1917;
+  border: none;
+  border-top: 1px solid #f59e0b;
+  border-bottom: 1px solid #b45309;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.15s ease;
+}
+
+.keyboard-toggle-bar:hover {
+  background: linear-gradient(180deg, #fde047 0%, #facc15 100%);
+}
+
+/* Collapsible Keyboard Section (HIDDEN by default) */
+.keyboard-section {
+  display: none;
+  background: #f1f5f9;
+  padding: 6px;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.keyboard-section.expanded {
+  display: block;
+}
+
+.kb-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.kb-row {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+
+.kb-key {
+  flex: 1;
+  min-width: 32px;
+  height: 36px;
+  border-radius: 5px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 1px 2px;
+  transition: all 0.08s ease;
+}
+
+.kb-key:hover {
+  background: #fef9c3;
+  border-color: #eab308;
+}
+
+.kb-key:active, .kb-key.pressed {
+  background: #059669;
+  color: #ffffff;
+  border-color: #047857;
+}
+
+.kb-key.wide {
+  flex: 1.8;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.kb-key.space {
+  flex: 4.5;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.kb-key.active-shift {
+  background: #059669;
+  color: #ffffff;
+  border-color: #047857;
+}
+
+.key-urdu {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.05;
+  font-family: 'Noto Naskh Arabic', 'Segoe UI', Tahoma, sans-serif;
+}
+
+.key-en {
+  font-size: 8.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.kb-key:active .key-en, .kb-key.active-shift .key-en {
+  color: #d1fae5;
+}
+
+/* Compact Footer with Talha Kalwal + Pakistan Flag */
+.app-footer {
+  background: #292524;
+  color: #f5f5f4;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.footer-stats {
+  color: #d6d3d1;
+  font-size: 10.5px;
+}
+
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+.pk-flag-svg {
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: inline-block;
+  vertical-align: middle;
+}

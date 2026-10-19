@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urdu Phonetic Writer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-actions">
+      <button type="button" id="copyBtn" class="tb-btn primary" title="Copy All Text">Copy</button>
+      <button type="button" id="pasteBtn" class="tb-btn" title="Paste Text">Paste</button>
+      <button type="button" id="selectAllBtn" class="tb-btn" title="Select All">Select All</button>
+      <button type="button" id="undoBtn" class="tb-btn" title="Undo">Undo</button>
+      <button type="button" id="redoBtn" class="tb-btn" title="Redo">Redo</button>
+      <button type="button" id="clearBtn" class="tb-btn danger" title="Clear All">Clear All</button>
+      <button type="button" id="fontDecBtn" class="tb-btn" title="Decrease Font Size">-</button>
+      <button type="button" id="fontIncBtn" class="tb-btn" title="Increase Font Size">+</button>
+    </div>
+    <button type="button" id="modeToggleBtn" class="mode-pill" title="Switch Phonetic Urdu / English (Ctrl+M)">اردو</button>
+  </header>
+
+  <div id="pasteFallbackBox" class="paste-box">
+    <input type="text" id="pasteFallbackInput" placeholder="Press Ctrl+V here and click Insert..." />
+    <button type="button" id="pasteConfirmBtn" class="paste-mini-btn">Insert</button>
+    <button type="button" id="pasteCancelBtn" class="paste-mini-btn cancel">✕</button>
+  </div>
+
+  <main class="editor-container">
+    <textarea id="urduEditor" class="urdu-text" placeholder="یہاں اردو لکھیں..."></textarea>
+    <span id="toastBadge" class="toast-overlay">Copied!</span>
+  </main>
+
+  <button type="button" id="toggleKbBtn" class="keyboard-toggle-bar" aria-expanded="false">
+    <span id="toggleKbLabel">Keyboard</span>
+    <span id="toggleKbArrow">▾</span>
+  </button>
+
+  <section id="keyboardSection" class="keyboard-section">
+    <div id="keyboardRows" class="kb-rows"></div>
+  </section>
+
+  <footer class="app-footer">
+    <span id="statsText" class="footer-stats">0 words | 0 chars</span>
+    <div class="footer-credit">
+      <span>Talha Kalwal</span>
+      <svg class="pk-flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pakistan Flag">
+        <rect width="30" height="20" fill="#01411C"/>
+        <rect width="7.5" height="20" fill="#FFFFFF"/>
+        <circle cx="19" cy="10" r="5.5" fill="#FFFFFF"/>
+        <circle cx="20.6" cy="8.6" r="5" fill="#01411C"/>
+        <polygon points="21.5,5.2 22.1,6.9 23.9,6.9 22.4,7.9 23.0,9.6 21.5,8.6 20.0,9.6 20.6,7.9 19.1,6.9 20.9,6.9" fill="#FFFFFF"/>
+      </svg>
+      <span>🇵🇰</span>
+    </div>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
